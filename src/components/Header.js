@@ -7,7 +7,7 @@ function Header() {
         <div className="header">
             
             <div className="header__logo">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Facebook_Logo_%282019%29.png/1024px-Facebook_Logo_%282019%29.png" alt="icon"/>
+                <img src="https://firebasestorage.googleapis.com/v0/b/syook-logistics.appspot.com/o/syook_logo.png?alt=media&token=06b7c408-6af3-4522-ae5a-1bc423ed5bdf" alt="icon"/>
                 <span>Logistics</span>
             </div>
 
@@ -17,19 +17,24 @@ function Header() {
                         Home
                 </div>
                 </NavLink>
-                <NavLink to='/vehicle'>
+                <NavLink to='/vehicles'>
                     <div className="header__option">
-                        Vehicle
+                        Vehicles
                     </div>
                 </NavLink>
-                <NavLink to='/customer'>
+                <NavLink to='/items'>
                     <div className="header__option">
-                        Customer
+                        Items
                     </div>
                 </NavLink>
-                <NavLink to='/order'>
+                <NavLink to='/customers'>
                     <div className="header__option">
-                        Order
+                        Customers
+                    </div>
+                </NavLink>
+                <NavLink to='/orders'>
+                    <div className="header__option">
+                        Orders
                     </div>
                 </NavLink>
             </div>

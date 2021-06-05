@@ -1,11 +1,11 @@
 import React from 'react'
 
-function OrderPage() {
+function Item() {
     return (
         <div>
-            Order Page
+            Item
         </div>
     )
 }
 
-export default OrderPage
+export default Item

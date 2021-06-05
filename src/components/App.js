@@ -2,10 +2,11 @@ import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import "./App.css"
 import Header from './Header.js'
-import HomePage from '../pages/HomePage';
+import Home from './Home';
 import Vehicle from './Vehicle';
-import CustomerPage from '../pages/CustomerPage';
-import OrderPage from '../pages/OrderPage';
+import Item from './Item';
+import Customer from './Customer';
+import Order from './Order';
 
 function App() {
   return (
@@ -13,10 +14,11 @@ function App() {
       <BrowserRouter>
         <Header />
         <Switch>
-            <Route exact path="/" component={HomePage} />
-            <Route path="/vehicle" component={Vehicle} />
-            <Route path="/customer" component={CustomerPage} />
-            <Route path="/order" component={OrderPage} />
+            <Route exact path="/" component={Home} />
+            <Route path="/vehicles" component={Vehicle} />
+            <Route path="/items" component={Item} />
+            <Route path="/customers" component={Customer} />
+            <Route path="/orders" component={Order} />
         </Switch>
       </BrowserRouter>
     </div>

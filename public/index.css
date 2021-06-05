@@ -9,6 +9,12 @@
   flex: 1;
 }
 
+.forms > form > label {
+  font-size: small;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
 .forms > form > input {
   padding: 5px 10px;
   border-radius: 5px;
@@ -18,10 +24,12 @@
   flex: 1;
 }
 
-.forms > form > label {
-  font-size: small;
-  margin-top: 10px;
-  margin-bottom: 5px;
+.forms > form > select {
+  background-color: #eff2f5e5;
+  padding: 5px 0px;
+  border-radius: 5px;
+  outline: none;
+  border: none;
 }
 
 .forms > form > button {
@@ -40,7 +48,7 @@
   background-color: #3912a3;
 }
 
-.form__error {
+.formerror {
   font-size: x-small;
   color: red;
 }
