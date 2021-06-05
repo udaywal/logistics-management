@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+}
+
+.forms > form {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.forms > form > input {
+  padding: 5px 10px;
+  border-radius: 5px;
+  background-color: #eff2f5e5;
+  border: none;
+  outline: none;
+  flex: 1;
+}
+
+.forms > form > label {
+  font-size: small;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.forms > form > button {
+  margin-top: 15px;
+  margin-bottom: 25px;
+  background-color: #4413ca;
+  color: #ffffff;
+  font-size: small;
+  padding: 5px 10px;
+  border-radius: 5px;
+  border: none;
+  cursor: pointer;
+}
+
+.forms > form > button:hover {
+  background-color: #3912a3;
+}
+
+.form__error {
+  font-size: x-small;
+  color: red;
+}

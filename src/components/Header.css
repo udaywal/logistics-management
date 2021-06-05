@@ -1,0 +1,42 @@
+.header {
+    background-color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    box-shadow: 0px 5px 8px -9px rgba(0,0,0,0.75);
+    top: 0;
+    position: sticky;
+    z-index: 100;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+}
+
+.header__logo > img {
+    object-fit: contain;
+    width: 40px;
+    padding-right: 10px;
+}
+
+.header__logo > span {
+    text-transform: uppercase;
+    font-weight: 600;
+    font-size: large;
+}
+
+.header__menu {
+    display: flex;
+    align-items: center;
+}
+
+.header__option {
+    font-size: small;
+    padding-right: 15px;
+}
+
+.header__option:hover {
+    color: #4413ca;
+    cursor: pointer;
+}
