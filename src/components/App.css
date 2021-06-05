@@ -3,3 +3,9 @@
     height: 100vh;
     overflow: auto;
 }
+
+.app__body {
+    max-width: 600px;
+    margin: auto;
+    margin-top: 40px;
+}

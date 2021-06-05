@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import './Vehicle.css'
 
 import firebase from 'firebase';
 import db from '../firebase';
@@ -36,7 +35,6 @@ function Vehicle() {
         initialValues: VehicleForm,
         validationSchema: VehicleSchema,
         onSubmit: (values, { resetForm }) => {
-            console.log(values);
             db.collection("vehicles").add({
                 ...values,
                 timestamp: firebase.firestore.FieldValue.serverTimestamp(),
@@ -70,6 +68,7 @@ function Vehicle() {
 
                         <label>Vehicle Type</label>
                         <select id="vehicleType" name="vehicleType" onChange={formik.handleChange} value={formik.values.vehicleType}>
+                            <option value="" hidden />
                             <option value="bike">Bike</option>
                             <option value="truck">Truck</option>
                         </select>
@@ -87,7 +86,14 @@ function Vehicle() {
                 </DialogContent>
             </Dialog>
 
-            <TableComponent heading={["Registration Number", "Vehicle Type", "City"]} content={vehicles} />
+            <TableComponent 
+                heading={[
+                    { name: "Registration Number", value: "registrationNumber" }, 
+                    { name: "Vehicle Type", value: "vehicleType" },
+                    { name: "City", value: "city" },
+                ]}
+                content={vehicles} 
+            />
             
         </div>
     )

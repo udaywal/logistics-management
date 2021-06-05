@@ -15,22 +15,18 @@ function TableComponent({ heading, content }) {
                 <TableHead>
                     <TableRow>
                         {heading.map(h => (
-                            <TableCell key={h} className={tableClasses.tableHeaderCell}>{h}</TableCell>
+                            <TableCell key={h.name} className={tableClasses.tableHeaderCell}>{h.name}</TableCell>
                         ))}
                     </TableRow>
                 </TableHead>
                 <TableBody>
                     {content.map((c) => (
                         <TableRow key={c.id} className={tableClasses.tableRow}>
-                            <TableCell>
-                                <div>{c.data.registrationNumber}</div>
-                            </TableCell>
-                            <TableCell>
-                                <div>{c.data.vehicleType}</div>
-                            </TableCell>
-                            <TableCell>
-                                <div>{c.data.city}</div>
-                            </TableCell>
+                            {heading.map(h => (
+                                <TableCell key={h.value}>
+                                    <div>{c.data[h.value]}</div>
+                                </TableCell>
+                            ))}
                         </TableRow>
                     ))}
                 </TableBody>
