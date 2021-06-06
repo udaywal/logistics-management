@@ -20,15 +20,15 @@ function Home() {
                         <LocalShippingIcon />
                         <p>Vehicles</p>
                 </Link>
-                <Link to='/vehicles' className="home__card">
+                <Link to='/items' className="home__card">
                     <AllInboxIcon />
                     <p>Items</p>
                 </Link>
-                <Link to='/vehicles' className="home__card">
+                <Link to='/customers' className="home__card">
                     <PersonIcon />
                     <p>Customers</p>
                 </Link>
-                <Link to='/vehicles' className="home__card">
+                <Link to='/orders' className="home__card">
                     <CreditCardIcon />
                     <p>Orders</p>
                 </Link>
