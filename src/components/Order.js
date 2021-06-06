@@ -5,6 +5,8 @@ import db from '../firebase';
 import TableComponent from './TableComponent';
 import TopBar from './TopBar';
 
+import { convertToObjByKey } from '../utils/common';
+
 import { Dialog, DialogTitle, DialogContent } from '@material-ui/core';
 
 import { useFormik } from 'formik';
@@ -53,22 +55,36 @@ function Order() {
     }
 
     useEffect(() => {
-        db.collection("orders").orderBy("timestamp", "desc").onSnapshot(snapshot => {
-            setOrders(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })));
-        })
-        db.collection("items").orderBy("timestamp", "desc").onSnapshot(snapshot => {
-            setItems(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })));
-        })
-        db.collection("customers").orderBy("timestamp", "desc").onSnapshot(snapshot => {
-            setCustomers(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })));
-        })
+        const fetchData = async () => {
+            let vehicleData = await db.collection("vehicles").orderBy("timestamp", "desc").get();
+            vehicleData = vehicleData.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+            setVehicles(vehicleData);
+            let itemsData = await db.collection("items").orderBy("timestamp", "desc").get();
+            itemsData = itemsData.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+            setItems(itemsData);
+            let customersData = await db.collection("customers").orderBy("timestamp", "desc").get();
+            customersData = customersData.docs.map((doc) => ({ id: doc.id, data: doc.data() }))
+            setCustomers(customersData);
+            const vehicleObj = convertToObjByKey(vehicleData, "id")
+            const itemObj = convertToObjByKey(itemsData, "id")
+            const customerObj = convertToObjByKey(customersData, "id")
+            db.collection("orders").orderBy("timestamp", "desc").onSnapshot(snapshot => {
+                setOrders(snapshot.docs.map((doc) => ({ 
+                    id: doc.id, 
+                    data: { 
+                    registrationNumber: vehicleObj[doc.data().deliveryVehicleId][0].data.registrationNumber,
+                    price: itemObj[doc.data().itemId][0].data.price,
+                    deliveryLocation: customerObj[doc.data().customerId][0].data.city,
+                    ...doc.data() 
+                    }  
+                })));
+            })
+        }
+        fetchData();
     }, [])
 
     useEffect(() => {
-        db.collection("vehicles").orderBy("timestamp", "desc").onSnapshot(snapshot => {
-            setVehicles(snapshot.docs.map((doc) => ({ id: doc.id, data: doc.data() })));
-            setAvailableVehicles(vehicles.filter(v => !(orders.map(o => o.data.deliveryVehicleId).includes(v.id))))
-        })
+        setAvailableVehicles(vehicles.filter(v => !(orders.map(o => o.data.deliveryVehicleId).includes(v.id))));
     }, [orders, vehicles])
 
     return (
@@ -122,8 +138,9 @@ function Order() {
 
             <TableComponent 
                 heading={[
-                    { name: "Name", value: "name" }, 
-                    { name: "City", value: "city" }
+                    { name: "Vehicle Number", value: "registrationNumber" }, 
+                    { name: "Order Price", value: "price" },
+                    { name: "Delivery Location", value: "deliveryLocation" }
                 ]} 
                 content={orders} 
             />

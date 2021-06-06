@@ -6,3 +6,15 @@ export const toTitleCase = (str) => {
       }
     ); 
 }
+
+export const convertToObjByKey = (objsArray = [], key) => {
+  return objsArray.reduce((acc, obj) => {
+    const objKey = obj[key];
+    if (acc[objKey]) {
+      acc[objKey].push({ ...obj });
+    } else {
+      acc[objKey] = [{ ...obj }];
+    }
+    return acc;
+  }, {});
+};

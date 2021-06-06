@@ -12,30 +12,20 @@ function Header() {
             </div>
 
             <div className="header__menu">
-                <NavLink to='/'>
-                    <div className="header__option">
-                        Home
-                </div>
+                <NavLink to='/' exact className="header__option" activeClassName="active_link">
+                    Home
                 </NavLink>
-                <NavLink to='/vehicles'>
-                    <div className="header__option">
-                        Vehicles
-                    </div>
+                <NavLink to='/vehicles' className="header__option" activeClassName="active_link">
+                    Vehicles
                 </NavLink>
-                <NavLink to='/items'>
-                    <div className="header__option">
-                        Items
-                    </div>
+                <NavLink to='/items' className="header__option" activeClassName="active_link">
+                    Items
                 </NavLink>
-                <NavLink to='/customers'>
-                    <div className="header__option">
-                        Customers
-                    </div>
+                <NavLink to='/customers' className="header__option" activeClassName="active_link">
+                    Customers
                 </NavLink>
-                <NavLink to='/orders'>
-                    <div className="header__option">
-                        Orders
-                    </div>
+                <NavLink to='/orders' className="header__option" activeClassName="active_link">
+                    Orders
                 </NavLink>
             </div>
 
