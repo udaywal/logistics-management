@@ -9,6 +9,8 @@ function TableComponent({ heading, content }) {
 
     const tableClasses = muiTableStyle();
 
+    console.log(content)
+
     return (
         <TableContainer component={Paper} className={tableClasses.tableContainer}>
             <Table>
